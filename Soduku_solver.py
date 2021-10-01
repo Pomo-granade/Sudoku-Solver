@@ -5,11 +5,13 @@ grid = [[0, 0, 5, 3, 0, 0, 0, 0, 0],
         [0, 1, 0, 0, 7, 0, 0, 0, 6],
         [0, 0, 3, 2, 0, 0, 0, 8, 0],
         [0, 6, 0, 5, 0, 0, 0, 0, 9],
-        [0, 0, 4, 0, 0, 0, 0, 3, 0]
+        [0, 0, 4, 0, 0, 0, 0, 3, 0],
+        [0, 0, 0, 0, 0, 9, 7, 0, 0]]
 
 def is_valid_move(grid, row, col, number):
     for x in range(9):
-        if grid[row] == number:
+        if grid[row][x] == number:
+            return False
 
     for x in range(9):
         if grid[x][col] == number:
@@ -21,6 +23,7 @@ def is_valid_move(grid, row, col, number):
         for y in range(3):
             if grid[corner_row + x][corner_col + y] == number:
                 return False
+    return True
 
 def solve(grid, row, col):
     if col == 9:
@@ -46,3 +49,7 @@ if solve(grid, 0, 0):
     for i in range(9):
         for j in range(9):
             print(grid[i][j], end=" ")
+
+        print()
+else:
+    print("No solution for this Sudoku")
